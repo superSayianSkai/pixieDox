@@ -1,20 +1,24 @@
 import { BiRectangle } from "react-icons/bi";
-import { BsDiamond } from "react-icons/bs";
 import { IoIosColorPalette } from "react-icons/io";
 import { LuCircle } from "react-icons/lu";
-import { IoIosArrowRoundForward } from "react-icons/io";
 import { MdOutlineEdit } from "react-icons/md";
-import { GoDash } from "react-icons/go";
 import { RxText } from "react-icons/rx";
-import { CiImageOn } from "react-icons/ci";
-import { CiEraser } from "react-icons/ci";
-import { PiHandThin } from "react-icons/pi";
+import { FaRegHandPaper } from "react-icons/fa";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { LuImage } from "react-icons/lu";
+import { TbEraser } from "react-icons/tb";
+import { BsDashLg } from "react-icons/bs";
+
+
+
+
+import { LuDiamond } from "react-icons/lu";
 
 const Icons = [
   {
     id: 0,
     name: "Hand",
-    Icon: PiHandThin,
+    Icon: FaRegHandPaper,
   },
   {
     id: 1,
@@ -24,7 +28,7 @@ const Icons = [
   {
     id: 2,
     name: "Diamond",
-    Icon: BsDiamond,
+    Icon: LuDiamond,
   },
   {
     id: 3,
@@ -34,7 +38,7 @@ const Icons = [
   {
     id: 4,
     name: "Arrow",
-    Icon: IoIosArrowRoundForward,
+    Icon: HiOutlineArrowNarrowRight,
   },
   {
     id: 5,
@@ -44,7 +48,7 @@ const Icons = [
   {
     id: 6,
     name: "Dash",
-    Icon: GoDash,
+    Icon: BsDashLg,
   },
   {
     id: 7,
@@ -54,12 +58,12 @@ const Icons = [
   {
     id: 8,
     name: "Picture",
-    Icon: CiImageOn,
+    Icon:  LuImage,
   },
   {
     id: 9,
     name: "Eraser",
-    Icon: CiEraser,
+    Icon: TbEraser,
   },
   {
     id: 10,

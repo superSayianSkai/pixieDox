@@ -1,0 +1,43 @@
+### 1. **HTML Canvas**
+   - Learn how to use the `<canvas>` element.
+   - Understand the 2D rendering context (`getContext('2d')`) for drawing shapes, lines, and images.
+
+### 2. **JavaScript Basics**
+   - Handling DOM events, such as mouse and touch events.
+   - Manipulating the canvas using methods like `moveTo()`, `lineTo()`, `stroke()`, etc.
+
+### 3. **Mouse and Touch Events**
+   - Capture user interactions like:
+     - `mousedown`, `mousemove`, and `mouseup` for drawing with a mouse.
+     - `touchstart`, `touchmove`, and `touchend` for touch screens.
+
+### 4. **State Management**
+   - Keep track of:
+     - Whether the user is currently drawing.
+     - The position of the mouse or touch point.
+   - Store the color, brush size, and other settings.
+
+### 5. **Drawing Shapes**
+   - Understand how to draw basic shapes like lines, rectangles, circles, etc.
+   - Implement freehand drawing by connecting consecutive points.
+
+### 6. **Customizing Tools**
+   - Add options for brush size, color, and shape.
+   - Include tools like an eraser, fill, or shape drawer.
+
+### 7. **Canvas Manipulation**
+   - Learn about:
+     - Clearing the canvas (`clearRect()`).
+     - Saving and restoring the drawing state.
+
+### 8. **Saving the Artwork**
+   - Use `canvas.toDataURL()` to save the drawing as an image.
+
+### 9. **Undo/Redo Functionality**
+   - Implement undo/redo by saving snapshots of the canvas at various states.
+
+### 10. **Advanced Features (Optional)**
+   - Add layers to allow users to work on different parts of the drawing separately.
+   - Integrate image uploading and editing.
+
+Would you like a roadmap or guidance on any specific part?

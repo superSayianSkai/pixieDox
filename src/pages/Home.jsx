@@ -1,20 +1,17 @@
-import Tools from "../component/Tools/Tools";
-import Body from "../component/Body/Body";
-import ExperimentPage from "../sandbox/ExperimentPage";
-import { FeatureFlags } from "../FeaturesFlag/FeatureFlag";
-
+import Tools from "../component/Tools"
+import Body from "../component/Body"
 const Home = () => {
   return (
-    <div className="bg-white overflow-auto">
-      {FeatureFlags.ExperimentPage ? (
-        <ExperimentPage />
-      ) : (
+    <div className="bg-white overflow-hidden">
+  
         <>
-          {" "}
           <Tools />
-          <Body/>
+          <Body />
+          <footer className="fixed bottom-0  translate-x-1/2 -translate-y-1/2 text-[24px] font-thin right-20 user-select">
+            Pixie<span className="text-purple-800">dox</span>
+          </footer>
         </>
-      )}
+      
     </div>
   );
 };
