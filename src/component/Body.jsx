@@ -6,6 +6,23 @@ import { HamburgerMenu } from "iconsax-reactjs";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Body = () => {
+  const controlsRef = useRef(null);
+  const [showControls, setShowControls] = useState(false);
+  const toggleControls = () => {
+    setShowControls(!showControls);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (controlsRef.current && !controlsRef.current.contains(e.target)) {
+        setShowControls(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const canvasRef = useRef(null);
   const generator = useRef(rough.generator()).current;
 
@@ -1231,228 +1248,232 @@ const Body = () => {
         <div className="relative">
           <div className="absolute right-0 flex justify-center gap-4 items-center">
             <div className="relative  hidden md:block">
-              <div className="cursor-pointer">?</div>
-              <div
-                className="absolute right-2 top-8 rounded-3xl text-gray-800 bg-white/95 backdrop-blur-2xl w-[280px] p-6 shadow-2xl border border-white/30"
-                style={{
-                  background: "rgba(255, 255, 255, 0.95)",
-                  backdropFilter: "blur(40px)",
-                  WebkitBackdropFilter: "blur(40px)",
-                }}
-              >
-                <div
-                  style={{
-                    marginBottom: "16px",
-                    fontSize: "16px",
-                    fontWeight: "600",
-                    color: "#1f2937",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "8px",
-                      height: "8px",
-                      background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
-                      borderRadius: "50%",
-                    }}
-                  />
-                  Controls
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "12px",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 16px",
-                      borderRadius: "16px",
-                      background: "rgba(248, 250, 252, 0.8)",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        color: "#64748b",
-                      }}
-                    >
-                      Mouse wheel
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#1e293b",
-                      }}
-                    >
-                      Zoom
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 16px",
-                      borderRadius: "16px",
-                      background: "rgba(248, 250, 252, 0.8)",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        color: "#64748b",
-                      }}
-                    >
-                      Middle click
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#1e293b",
-                      }}
-                    >
-                      Pan
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 16px",
-                      borderRadius: "16px",
-                      background: "rgba(248, 250, 252, 0.8)",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        color: "#64748b",
-                      }}
-                    >
-                      Ctrl+A
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#1e293b",
-                      }}
-                    >
-                      Select all
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 16px",
-                      borderRadius: "16px",
-                      background: "rgba(248, 250, 252, 0.8)",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        color: "#64748b",
-                      }}
-                    >
-                      Delete
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#1e293b",
-                      }}
-                    >
-                      Remove selected
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 16px",
-                      borderRadius: "16px",
-                      background: "rgba(248, 250, 252, 0.8)",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        color: "#64748b",
-                      }}
-                    >
-                      Escape
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#1e293b",
-                      }}
-                    >
-                      Deselect
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 16px",
-                      borderRadius: "16px",
-                      background: "rgba(248, 250, 252, 0.8)",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "500",
-                        color: "#64748b",
-                      }}
-                    >
-                      Ctrl+0
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        color: "#1e293b",
-                      }}
-                    >
-                      Reset zoom
-                    </span>
-                  </div>
-                </div>
+              <div onClick={toggleControls} className="cursor-pointer">
+                ?
               </div>
-            </div>
 
+              {showControls && (
+                <div
+                  className="absolute right-2 top-8 rounded-3xl text-gray-800 bg-white/95 backdrop-blur-2xl w-[280px] p-6 shadow-2xl border border-white/30"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(40px)",
+                    WebkitBackdropFilter: "blur(40px)",
+                  }}
+                >
+                  <div
+                    style={{
+                      marginBottom: "16px",
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      color: "#1f2937",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+                        borderRadius: "50%",
+                      }}
+                    />
+                    Controls
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "12px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 16px",
+                        borderRadius: "16px",
+                        background: "rgba(248, 250, 252, 0.8)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "500",
+                          color: "#64748b",
+                        }}
+                      >
+                        Mouse wheel
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "#1e293b",
+                        }}
+                      >
+                        Zoom
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 16px",
+                        borderRadius: "16px",
+                        background: "rgba(248, 250, 252, 0.8)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "500",
+                          color: "#64748b",
+                        }}
+                      >
+                        Middle click
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "#1e293b",
+                        }}
+                      >
+                        Pan
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 16px",
+                        borderRadius: "16px",
+                        background: "rgba(248, 250, 252, 0.8)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "500",
+                          color: "#64748b",
+                        }}
+                      >
+                        Ctrl+A
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "#1e293b",
+                        }}
+                      >
+                        Select all
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 16px",
+                        borderRadius: "16px",
+                        background: "rgba(248, 250, 252, 0.8)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "500",
+                          color: "#64748b",
+                        }}
+                      >
+                        Delete
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "#1e293b",
+                        }}
+                      >
+                        Remove selected
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 16px",
+                        borderRadius: "16px",
+                        background: "rgba(248, 250, 252, 0.8)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "500",
+                          color: "#64748b",
+                        }}
+                      >
+                        Escape
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "#1e293b",
+                        }}
+                      >
+                        Deselect
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 16px",
+                        borderRadius: "16px",
+                        background: "rgba(248, 250, 252, 0.8)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "500",
+                          color: "#64748b",
+                        }}
+                      >
+                        Ctrl+0
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "600",
+                          color: "#1e293b",
+                        }}
+                      >
+                        Reset zoom
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
             <div>
               <HamburgerMenu className="h-auto w-10 md:w-8 bg-gray-200 p-2 rounded-md cursor-pointer hover:opacity-50" />
             </div>
